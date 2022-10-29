@@ -1,7 +1,11 @@
 {
     "name": "ltsat/sitemap-generator",
     "description": "Sitemap generation library",
+    "version": "1.0.4",
+    "keywords": ["php", "sitemap", "generator"],
     "type": "library",
+    "license": "MIT",
+    "minimum-stability": "stable",
     "autoload": {
         "psr-4": {
             "Ltsat\\SitemapGenerator\\": "src/"
@@ -13,13 +17,14 @@
             "email": "liana.tsaturyan.a@gmail.com"
         }
     ],
-    "require": {},
+    "require": {
+        "php": ">=7.0.0",
+        "ext-simplexml": "*",
+        "ext-zlib": "*"
+    },
     "autoload": {
         "psr-4": {
             "Ltsat\\App\\": "src"
-        },
-        "files": [
-            "src/helpers.php"
-        ]
+        }
     }
 }
