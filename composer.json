@@ -1,0 +1,25 @@
+{
+    "name": "ltsat/sitemap-generator",
+    "description": "Sitemap generation library",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "Ltsat\\SitemapGenerator\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "liana tsaturyan",
+            "email": "liana.tsaturyan.a@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Ltsat\\App\\": "src"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
+    }
+}
