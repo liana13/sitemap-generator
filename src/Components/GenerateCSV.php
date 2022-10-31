@@ -1,13 +1,18 @@
 <?php
-namespace Ltsat\App\Components;
 
-class GenerateCSV {
+namespace Ltsat\SitemapGenerator\Components;
+
+use Ltsat\SitemapGenerator\Abstracts\GenerateFormat;
+
+class GenerateCSV extends GenerateFormat
+{
     /**
      * Run to create sitemap.
      *
+     * @param array $links
      * @return string
      */
-    public function run(array $links) : string
+    public function run(array $links): string
     {
         $sitemap = implode(';', array_keys($links[0])) . "\n";
 
