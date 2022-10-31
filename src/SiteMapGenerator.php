@@ -3,6 +3,7 @@ namespace Ltsat\App;
 use Ltsat\App\Components\GenerateXML;
 use Ltsat\App\Components\GenerateCSV;
 use Ltsat\App\Components\GenerateJSON;
+use Illuminate\Support\Facades\File;
 
 class SiteMapGenerator {
     /** @const string TYPE_XML */
@@ -29,22 +30,33 @@ class SiteMapGenerator {
     /**
      * SiteMapGenerator constructor.
      */
-    public function __construct(array $links, string $filetype, string $filepath)
+    public function __construct(array $links, string $filetype = self::TYPE_XML, string $filepath)
     {
         $this->links = $links;
         $this->filetype = $filetype;
         $this->filepath = $filepath;
     }
 
-    public function handle()
+    public function handle(string $filetype = self::TYPE_XML)
     {
-        $sitemap = $this->getInstance($this->filetype)->run($this->links);
-        return $this->createFile($sitemap);
+        if (count($this->links) == 0) {
+            throw new \Exception("Error Processing Request", 1);
+        }
+        $sitemap = $this->getInstance($filetype)->run($this->links);
+        return $this->createFile($sitemap, $filetype);
     }
 
-    public function createFile(string $sm)
+    public function createFile(string $sm, string $filetype)
     {
-        // code...
+        File::ensureDirectoryExists($this->filepath);
+
+        $filename = 'sitemap'.$this->filetype;
+
+        $file = fopen($filename, "w") or die("Unable to open file!");
+        fwrite($file, $sm);
+        fclose($file);
+
+        $file->move($this->filepath, $filename);
     }
 
     /**

@@ -9,6 +9,6 @@ class GenerateJSON {
      */
     public function run(array $links) : string
     {
-        //
+        return json_encode($links);
     }
 }
