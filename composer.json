@@ -1,30 +1,60 @@
 {
-    "name": "ltsat/sitemap-generator",
-    "description": "Sitemap generation library",
-    "version": "1.0.4",
-    "keywords": ["php", "sitemap", "generator"],
-    "type": "library",
-    "license": "MIT",
-    "minimum-stability": "stable",
-    "autoload": {
-        "psr-4": {
-            "Ltsat\\SitemapGenerator\\": "src/"
-        }
-    },
-    "authors": [
-        {
-            "name": "liana tsaturyan",
-            "email": "liana.tsaturyan.a@gmail.com"
-        }
-    ],
-    "require": {
-        "php": ">=7.0.0",
-        "ext-simplexml": "*",
-        "ext-zlib": "*"
-    },
-    "autoload": {
-        "psr-4": {
-            "Ltsat\\App\\": "src"
-        }
+  "name": "ltsat/sitemap-generator",
+  "description": "Sitemap generation library support in your Laravel application",
+  "version": "1.0.4",
+  "keywords": [
+    "php",
+    "sitemap",
+    "generator"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "liana tsaturyan",
+      "email": "liana.tsaturyan.a@gmail.com"
     }
+  ],
+  "require": {
+    "php": ">=7.0.0",
+    "illuminate/support": "^6|^7|^8|^9",
+    "illuminate/contracts": "^6|^7|^8|^9",
+    "ext-simplexml": "*",
+    "ext-zlib": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Ltsat\\SitemapGenerator\\": "./vendor/ltast/sitemap-generator/src/"
+    }
+  },
+  "autoload": {
+    "psr-4": {
+      "Ltsat\\SitemapGenerator\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Ltsat\\SitemapGenerator\\Tests\\": "tests/"
+    }
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "2.1-dev"
+    },
+    "laravel": {
+      "providers": [
+        "Ltsat\\SitemapGenerator\\Providers\\SitemapServiceProvider"
+      ],
+      "aliases": [
+        {
+          "SiteMap": "Ltsat\\SitemapGenerator\\Facade\\SiteMap"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "test": "phpunit",
+    "check-style": "phpcs -p --standard=psr12 src/",
+    "fix-style": "phpcbf -p --standard=psr12 src/"
+  },
+  "minimum-stability": "dev"
 }
