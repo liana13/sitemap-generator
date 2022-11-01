@@ -21,10 +21,11 @@
     "ext-simplexml": "*",
     "ext-zlib": "*"
   },
-  "autoload": {
-    "psr-4": {
-      "Ltsat\\SitemapGenerator\\": "./vendor/ltast/sitemap-generator/src/"
-    }
+  "prefer-stable": true,
+  "minimum-stability": "dev",
+  "config": {
+    "process-timeout": 0,
+    "sort-packages": true
   },
   "autoload": {
     "psr-4": {
@@ -37,12 +38,9 @@
     }
   },
   "extra": {
-    "branch-alias": {
-      "dev-master": "2.1-dev"
-    },
     "laravel": {
       "providers": [
-        "Ltsat\\SitemapGenerator\\Providers\\SitemapServiceProvider"
+        "Ltsat\\SitemapGenerator\\SitemapServiceProvider"
       ],
       "aliases": [
         {
@@ -50,11 +48,5 @@
         }
       ]
     }
-  },
-  "scripts": {
-    "test": "phpunit",
-    "check-style": "phpcs -p --standard=psr12 src/",
-    "fix-style": "phpcbf -p --standard=psr12 src/"
-  },
-  "minimum-stability": "dev"
+  }
 }
